@@ -12,7 +12,7 @@ export default function App() {
   return (
      <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className='w-full'>
    
         <Outlet />
       </main>

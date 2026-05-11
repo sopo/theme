@@ -1,14 +1,23 @@
 
 
+import { Outlet } from 'react-router'
 import './App.css'
-import Theme from './pages/theme'
+import { AppSidebar } from './components/app-sidebar'
+import { SidebarProvider,} from './components/ui/sidebar'
 
-function App() {
+
+export default function App() {
 
 
   return (
-   <Theme />
+     <SidebarProvider>
+      <AppSidebar />
+      <main>
+   
+        <Outlet />
+      </main>
+    </SidebarProvider>
   )
 }
 
-export default App
+

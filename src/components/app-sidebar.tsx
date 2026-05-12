@@ -22,7 +22,7 @@ export function AppSidebar() {
             <Link to="components">Components</Link>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <Link to="login-form">Log In Form</Link>
+            <Link to="forms">Forms</Link>
           </SidebarMenuItem>
         </SidebarGroup>
       </SidebarContent>

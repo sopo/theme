@@ -10,7 +10,6 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -29,25 +28,32 @@ import { useNavigate } from "react-router";
 
 
 
-const LoginForm = () => {
-    const [inputType, setInputType]=useState<"text" | "password">("password")
+const RegisterForm = () => {
     const navigate=useNavigate()
+    const [inputType, setInputType]=useState<"text" | "password">("password")
   const formSchema = z.object({
+          name: z
+      .string()
+      .min(2, "Name must be at least 2 characters")
+       .max(20, "Name must be at most 20 characters"),
+
     email: z
       .email({message: "Enter valid e-mail"})
       .min(5, "Email must be at least 5 characters")
-      .max(32, "Email must be at most 32 characters"),
+      .max(20, "Email must be at most 20 characters"),
 
     password: z
       .string()
       .min(8, "Password must be at least 8 characters")
-      .max(100, "Password must be at most 100 characters"),
+      .max(20, "Password must be at most 20 characters"),
+
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
+      name: "",
     },
   });
 
@@ -58,14 +64,32 @@ const LoginForm = () => {
   return (
     <Card className="w-full sm:max-w-md">
       <CardHeader>
-        <CardTitle>Log in Form</CardTitle>
-        <CardDescription>
-         Log in to your account.
-        </CardDescription>
+        <CardTitle>Register</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col">
-        <form id="login" onSubmit={form.handleSubmit(onSubmit)} >
+      <CardContent>
+        <form id="register" onSubmit={form.handleSubmit(onSubmit)} >
           <FieldGroup>
+              <Controller
+              name="name"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="name">
+                   Your Name
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="name"
+                    aria-invalid={fieldState.invalid}
+                    placeholder="Enter name"
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
             <Controller
               name="email"
               control={form.control}
@@ -114,28 +138,26 @@ const LoginForm = () => {
             />
           </FieldGroup>
         </form>
-             <Button variant="link" className="self-end">
-            Forgot password
-             </Button>
       </CardContent>
-      <CardFooter className="flex flex-col gap-4 items-start">
+      <CardFooter className="flex flex-col gap-4 items-start" >
    
         <Field orientation="horizontal">
             
-          <Button type="submit" form="login">
-            Log In
+          <Button type="submit" form="register">
+            Register
           </Button>
         </Field>
-            <div className="flex flex-col gap-2">
-             Do not have an account?
+          <div className="flex flex-col gap-2">
+             Already have an account?
              <div>
-          <Button variant="outline" onClick={()=>navigate("/auth/register")}>
-            Register
+          <Button variant="outline" onClick={()=>navigate("/auth/log-in")} >
+            Log In
           </Button>
           </div>
         </div>
+       
       </CardFooter>
     </Card>
   );
 };
-export default LoginForm;
+export default RegisterForm;

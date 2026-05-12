@@ -1,12 +1,7 @@
 import * as z from "zod";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
 import {
   Card,
   CardContent,
@@ -15,26 +10,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { Field, FieldGroup } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useState } from "react";
+
 import { useNavigate } from "react-router";
-
-
+import ControlledField from "../controlled-field";
 
 const LoginForm = () => {
-    const [inputType, setInputType]=useState<"text" | "password">("password")
-    const navigate=useNavigate()
+  const navigate = useNavigate();
   const formSchema = z.object({
     email: z
-      .email({message: "Enter valid e-mail"})
+      .email({ message: "Enter valid e-mail" })
       .min(5, "Email must be at least 5 characters")
       .max(32, "Email must be at most 32 characters"),
 
@@ -59,79 +45,45 @@ const LoginForm = () => {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Log in Form</CardTitle>
-        <CardDescription>
-         Log in to your account.
-        </CardDescription>
+        <CardDescription>Log in to your account.</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col">
-        <form id="login" onSubmit={form.handleSubmit(onSubmit)} >
+        <form id="login" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
-            <Controller
+            <ControlledField
               name="email"
+              placeholder="Enter E-mail"
+              label="Email"
               control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="email">
-                    E-mail
-                  </FieldLabel>
-                  <Input
-                    {...field}
-                    id="email"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="E-mail"
-                    autoComplete="off"
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
             />
-            <Controller
+            <ControlledField
               name="password"
+              placeholder="Enter Password"
+              label="Password"
               control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <InputGroup>
-                    <InputGroupInput
-                      {...field}
-                      id="password"
-                      type={inputType}
-                      placeholder="Enter password"
-                    />
-                    <InputGroupAddon align="inline-end">
-                     {inputType==="password"? <EyeOffIcon className="cursor-pointer" onClick={()=>setInputType("text")}/>
-                     : <EyeIcon className="cursor-pointer" onClick={()=>setInputType("password")}/>}
-                    </InputGroupAddon>
-                  
-                  </InputGroup>
-                     {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
+              type="password"
             />
           </FieldGroup>
         </form>
-             <Button variant="link" className="self-end">
-            Forgot password
-             </Button>
+        <Button variant="link" className="self-end">
+          Forgot password
+        </Button>
       </CardContent>
       <CardFooter className="flex flex-col gap-4 items-start">
-   
         <Field orientation="horizontal">
-            
           <Button type="submit" form="login">
             Log In
           </Button>
         </Field>
-            <div className="flex flex-col gap-2">
-             Do not have an account?
-             <div>
-          <Button variant="outline" onClick={()=>navigate("/auth/register")}>
-            Register
-          </Button>
+        <div className="flex flex-col gap-2">
+          Do not have an account?
+          <div>
+            <Button
+              variant="outline"
+              onClick={() => navigate("/auth/register")}
+            >
+              Register
+            </Button>
           </div>
         </div>
       </CardFooter>

@@ -3,9 +3,11 @@ import RegisterForm from "@/components/forms/register-form"
 
 const FormComponents=()=>{
     return(
-        <div className="flex flex-col gap-4">
+        <div className="m-40">
+        <div className="flex  gap-4">
             <LoginForm />
             <RegisterForm />
+        </div>
         </div>
     )
 }

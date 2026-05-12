@@ -46,6 +46,7 @@ const ControlledField = <T extends FieldValues>({
                       id="password"
                       type={inputType}
                       placeholder={placeholder}
+                      aria-invalid={fieldState.invalid}
                     />
                     <InputGroupAddon align="inline-end">
                      {inputType==="password"? <EyeOffIcon className="cursor-pointer" onClick={()=>setInputType("text")}/>

@@ -1,12 +1,14 @@
-import LoginForm from "@/components/forms/login-form"
+import LoginForm from "@/components/forms/login-form/login-form"
 import RegisterForm from "@/components/forms/register-form"
+import ResetPasswordForm from "@/components/forms/reset-password-form"
 
 const FormComponents=()=>{
     return(
         <div className="m-40">
-        <div className="flex  gap-4">
+        <div className="flex flex-col gap-4">
             <LoginForm />
             <RegisterForm />
+            <ResetPasswordForm />
         </div>
         </div>
     )

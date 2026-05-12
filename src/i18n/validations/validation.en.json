@@ -1,0 +1,13 @@
+{
+  
+    "email": {
+      "invalid": "Enter valid e-mail",
+      "min": "Email must be at least 5 characters",
+      "max": "Email must be at most 32 characters"
+    },
+    "password": {
+      "min": "Password must be at least 8 characters",
+      "max": "Password must be at most 100 characters"
+    }
+ 
+}

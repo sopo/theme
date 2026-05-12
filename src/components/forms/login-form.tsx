@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/card";
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
@@ -26,18 +25,21 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
+
+
+
 const LoginForm = () => {
     const [inputType, setInputType]=useState<"text" | "password">("password")
   const formSchema = z.object({
     email: z
-      .email({message: "Enter valid email y"})
-      .min(5, "Email must be at least 5 characters.")
-      .max(32, "Email must be at most 32 characters."),
+      .email({message: "Enter valid e-mail"})
+      .min(5, "Email must be at least 5 characters")
+      .max(32, "Email must be at most 32 characters"),
 
     password: z
       .string()
-      .min(8, "Password must be at least 8 characters.")
-      .max(100, "Password must be at most 100 characters."),
+      .min(8, "Password must be at least 8 characters")
+      .max(100, "Password must be at most 100 characters"),
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,11 +58,11 @@ const LoginForm = () => {
       <CardHeader>
         <CardTitle>Log in Form</CardTitle>
         <CardDescription>
-          Help us improve by reporting bugs you encounter.
+         Log in to your account.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+      <CardContent className="flex flex-col">
+        <form id="login" onSubmit={form.handleSubmit(onSubmit)} >
           <FieldGroup>
             <Controller
               name="email"
@@ -100,10 +102,8 @@ const LoginForm = () => {
                      {inputType==="password"? <EyeOffIcon className="cursor-pointer" onClick={()=>setInputType("text")}/>
                      : <EyeIcon className="cursor-pointer" onClick={()=>setInputType("password")}/>}
                     </InputGroupAddon>
+                  
                   </InputGroup>
-                  <FieldDescription>
-                    Icon positioned at the end.
-                  </FieldDescription>
                      {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
@@ -112,14 +112,16 @@ const LoginForm = () => {
             />
           </FieldGroup>
         </form>
+             <Button variant="link" className="self-end">
+            Forgot password
+             </Button>
       </CardContent>
       <CardFooter>
+   
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-          <Button type="submit" form="form-rhf-demo">
-            Submit
+            
+          <Button type="submit" form="login">
+            Log In
           </Button>
         </Field>
       </CardFooter>

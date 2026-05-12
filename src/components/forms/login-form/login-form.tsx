@@ -17,6 +17,7 @@ import { useNavigate } from "react-router";
 import ControlledField from "../../controlled-field";
 import createLoginSchema from "./schema";
 import { useTranslation } from "react-i18next";
+import { ArrowRight } from "lucide-react";
 
 
 const LoginForm = () => {
@@ -37,10 +38,24 @@ const LoginForm = () => {
   }
 
   return (
-    <Card className="w-full sm:max-w-md">
+
+    <Card className="mt-40 w-full sm:max-w-md mx-auto bg-neutral-100 ring-0 shadow-none">
       <CardHeader>
-        <CardTitle>Log in Form</CardTitle>
-        <CardDescription>Log in to your account.</CardDescription>
+        <CardTitle className="text-2xl">Log in Form</CardTitle>
+        <CardDescription>
+          <div className="flex items-center">
+          Do not have an account?
+          <div>
+            <Button
+              variant="link"
+              onClick={() => navigate("/auth/register")}
+            >
+              Register
+            </Button>
+          </div>
+      
+        </div>
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col">
         <form id="login" onSubmit={form.handleSubmit(onSubmit)}>
@@ -51,6 +66,7 @@ const LoginForm = () => {
               label="Email"
               control={form.control}
             />
+         
             <ControlledField
               name="password"
               placeholder="Enter Password"
@@ -58,31 +74,26 @@ const LoginForm = () => {
               control={form.control}
               type="password"
             />
+
+                 
           </FieldGroup>
         </form>
-        <Button variant="link" className="self-end">
-          Forgot password
-        </Button>
+    
       </CardContent>
-      <CardFooter className="flex flex-col gap-4 items-start">
+      <CardFooter className="flex flex-col gap-16 items-start">
         <Field orientation="horizontal">
-          <Button type="submit" form="login">
+          <Button size="xl" type="submit" form="login">
             Log In
+           <ArrowRight />
           </Button>
         </Field>
-        <div className="flex flex-col gap-2">
-          Do not have an account?
-          <div>
-            <Button
-              variant="outline"
-              onClick={() => navigate("/auth/register")}
-            >
-              Register
-            </Button>
-          </div>
-        </div>
+        <Button variant="link" onClick={()=>navigate("/auth/reset-password")} >
+          Forgot password
+        </Button>
+        
       </CardFooter>
     </Card>
+
   );
 };
 export default LoginForm;

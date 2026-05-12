@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -17,6 +18,7 @@ import { useNavigate } from "react-router";
 import ControlledField from "@/components/controlled-field";
 import { useTranslation } from "react-i18next";
 import createRegisterSchema from "./schema";
+import { ArrowRight } from "lucide-react";
 
 
 const RegisterForm = () => {
@@ -37,9 +39,19 @@ const schema=createRegisterSchema(t)
   }
 
   return (
-    <Card className="w-full sm:max-w-md">
+    <Card className="mt-40 w-full sm:max-w-md mx-auto bg-neutral-100 ring-0 shadow-none">
       <CardHeader>
-        <CardTitle>Register</CardTitle>
+        <CardTitle className="text-2xl">Register</CardTitle>
+        <CardDescription>
+           <div className="flex items-center">
+          Already have an account?
+          <div>
+            <Button variant="link" onClick={() => navigate("/auth/log-in")}>
+              Log In
+            </Button>
+          </div>
+        </div>
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form id="register" onSubmit={form.handleSubmit(onSubmit)}>
@@ -69,18 +81,12 @@ const schema=createRegisterSchema(t)
       </CardContent>
       <CardFooter className="flex flex-col gap-4 items-start">
         <Field orientation="horizontal">
-          <Button type="submit" form="register">
+          <Button size="xl" type="submit" form="register">
             Register
+            <ArrowRight />
           </Button>
         </Field>
-        <div className="flex flex-col gap-2">
-          Already have an account?
-          <div>
-            <Button variant="outline" onClick={() => navigate("/auth/log-in")}>
-              Log In
-            </Button>
-          </div>
-        </div>
+       
       </CardFooter>
     </Card>
   );

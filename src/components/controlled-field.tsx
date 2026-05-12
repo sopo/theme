@@ -28,8 +28,8 @@ const ControlledField = <T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={name}>
+        <Field data-invalid={fieldState.invalid} >
+          <FieldLabel htmlFor={name} >
             {label}
           </FieldLabel>
 
@@ -39,14 +39,19 @@ const ControlledField = <T extends FieldValues>({
             aria-invalid={fieldState.invalid}
             placeholder={placeholder}
             autoComplete="off"
+            className="bg-white"
           />:
-           <InputGroup>
+           <InputGroup className="bg-white">
+       
+                
+
                     <InputGroupInput
                       {...field}
                       id="password"
                       type={inputType}
                       placeholder={placeholder}
                       aria-invalid={fieldState.invalid}
+                   
                     />
                     <InputGroupAddon align="inline-end">
                      {inputType==="password"? <EyeOffIcon className="cursor-pointer" onClick={()=>setInputType("text")}/>

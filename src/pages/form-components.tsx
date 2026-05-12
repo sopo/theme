@@ -4,13 +4,13 @@ import ResetPasswordForm from "@/components/forms/reset-password-form/reset-pass
 
 const FormComponents=()=>{
     return(
-        <div className="m-40">
-        <div className="flex flex-col gap-4">
+
+        <div className="flex flex-col gap-4 w-full">
             <LoginForm />
             <RegisterForm />
             <ResetPasswordForm />
         </div>
-        </div>
+
     )
 }
 export default FormComponents

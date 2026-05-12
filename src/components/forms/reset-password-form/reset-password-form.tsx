@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import ControlledField from "../../controlled-field";
 import { useTranslation } from "react-i18next";
 import createResetPasswordSchema from "./schema";
+import { ArrowRight } from "lucide-react";
 
 const ResetPasswordForm = () => {
 const {t}=useTranslation()
@@ -32,9 +33,9 @@ const schema =createResetPasswordSchema(t)
   }
 
   return (
-    <Card className="w-full sm:max-w-md">
+    <Card className="mt-40 w-full sm:max-w-md mx-auto bg-neutral-100 ring-0 shadow-none">
       <CardHeader>
-        <CardTitle>Reset Password</CardTitle>
+        <CardTitle className="text-2xl">Reset Password</CardTitle>
         <CardDescription>Enter your email to receive link</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col">
@@ -53,8 +54,9 @@ const schema =createResetPasswordSchema(t)
       </CardContent>
       <CardFooter >
         <Field orientation="horizontal">
-          <Button type="submit" form="resetPassword">
+          <Button size="xl" type="submit" form="resetPassword">
             Send Link
+               <ArrowRight />
           </Button>
         </Field>
       </CardFooter>

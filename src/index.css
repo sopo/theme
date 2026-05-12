@@ -6,6 +6,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+
+
+    --color-coolGreen-50: var(--coolGreen-50);
+  --color-coolGreen-100: var(--coolGreen-100);
+  --color-coolGreen-200: var(--coolGreen-200);
+  --color-coolGreen-300: var(--coolGreen-300);
+  --color-coolGreen-400: var(--coolGreen-400);
+  --color-coolGreen-500: var(--coolGreen-500);
+  --color-coolGreen-600: var(--coolGreen-600);
+  --color-coolGreen-700: var(--coolGreen-700);
+  --color-coolGreen-800: var(--coolGreen-800);
+  --color-coolGreen-900: var(--coolGreen-900);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -81,6 +94,17 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+--coolGreen-50:  oklch(97.2% 0.018 145);
+--coolGreen-100: oklch(94.8% 0.022 145);
+--coolGreen-200: oklch(90.8% 0.028 145);
+--coolGreen-300: oklch(84.5% 0.036 145);
+--coolGreen-400: oklch(76.2% 0.048 145);
+--coolGreen-500: oklch(66.8% 0.062 145);
+--coolGreen-600: oklch(56.4% 0.055 145);
+--coolGreen-700: oklch(45.8% 0.045 145);
+--coolGreen-800: oklch(35.2% 0.035 145);
+--coolGreen-900: oklch(24.8% 0.025 145);
 }
 
 .dark {

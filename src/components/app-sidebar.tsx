@@ -3,6 +3,7 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
@@ -24,6 +25,25 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <Link to="forms">Forms</Link>
           </SidebarMenuItem>
+
+        </SidebarGroup>
+
+           <SidebarGroup>
+            <SidebarGroupLabel>
+              PAGES
+            </SidebarGroupLabel>
+            <SidebarMenuItem>
+            <Link to="/auth/login">Log in</Link>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <Link to="/auth/register">Register </Link>
+          </SidebarMenuItem>
+           <SidebarMenuItem>
+            <Link to="/auth/reset-password">Reset password </Link>
+          </SidebarMenuItem>
+
+         
+          
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter />

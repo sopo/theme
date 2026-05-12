@@ -12,25 +12,22 @@ import {
 } from "@/components/ui/card";
 import { Field, FieldGroup } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
-import ControlledField from "../controlled-field";
+import ControlledField from "../../controlled-field";
+import { useTranslation } from "react-i18next";
+import createResetPasswordSchema from "./schema";
 
 const ResetPasswordForm = () => {
-  const formSchema = z.object({
-    email: z
-      .email({ message: "Enter valid e-mail" })
-      .min(5, "Email must be at least 5 characters")
-      .max(32, "Email must be at most 32 characters"),
-
-  });
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+const {t}=useTranslation()
+const schema =createResetPasswordSchema(t)
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
     defaultValues: {
       email: "",
 
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: z.infer<typeof schema>) {
     console.log(data);
   }
 

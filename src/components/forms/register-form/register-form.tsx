@@ -14,28 +14,17 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
 import { useNavigate } from "react-router";
-import ControlledField from "../controlled-field";
+import ControlledField from "@/components/controlled-field";
+import { useTranslation } from "react-i18next";
+import createRegisterSchema from "./schema";
+
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const formSchema = z.object({
-    name: z
-      .string()
-      .min(2, "Name must be at least 2 characters")
-      .max(20, "Name must be at most 20 characters"),
-
-    email: z
-      .email({ message: "Enter valid e-mail" })
-      .min(5, "Email must be at least 5 characters")
-      .max(20, "Email must be at most 20 characters"),
-
-    password: z
-      .string()
-      .min(8, "Password must be at least 8 characters")
-      .max(20, "Password must be at most 20 characters"),
-  });
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const {t}=useTranslation()
+const schema=createRegisterSchema(t)
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
     defaultValues: {
       email: "",
       password: "",
@@ -43,7 +32,7 @@ const RegisterForm = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: z.infer<typeof schema>) {
     console.log(data);
   }
 

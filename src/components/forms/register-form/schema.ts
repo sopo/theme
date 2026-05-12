@@ -1,7 +1,16 @@
 import * as z from "zod"
 
-const createLoginSchema = (t: (key: string) => string) =>
+const createRegisterSchema = (t: (key: string) => string) =>
   z.object({
+     name: z
+      .string()
+      .min(2, {
+        message: t("validation.name.min"),
+      })
+      .max(20, {
+        message: t("validation.name.max"),
+      }),
+
     email: z
       .email({
         message: t("validation.email.invalid"),
@@ -22,4 +31,4 @@ const createLoginSchema = (t: (key: string) => string) =>
         message: t("validation.password.max"),
       }),
   })
-  export default createLoginSchema
+  export default createRegisterSchema

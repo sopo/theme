@@ -25,6 +25,9 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <Link to="forms">Forms</Link>
           </SidebarMenuItem>
+               <SidebarMenuItem>
+            <Link to="preview">Preview</Link>
+          </SidebarMenuItem>
 
         </SidebarGroup>
 

@@ -1,3 +1,7 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Georgian:wdth@62.5..100&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
 @import "tw-animate-css";
@@ -59,6 +63,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --font-heading: var(--font-sans);
   --font-sans: 'Inter Variable', sans-serif;
+  --font-serif: "Playfair Display", serif;
 }
 
 :root {
@@ -105,6 +110,7 @@
 --coolGreen-700: oklch(45.8% 0.045 145);
 --coolGreen-800: oklch(35.2% 0.035 145);
 --coolGreen-900: oklch(24.8% 0.025 145);
+  --font-serif: "Playfair Display", serif;
 }
 
 .dark {

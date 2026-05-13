@@ -1,54 +1,44 @@
-
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-const images = [
-  {
-    id: 1,
-    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-    alt: "Mountain",
-  },
-  {
-    id: 2,
-    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-    alt: "Beach",
-  },
-  {
-    id: 3,
-    src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e",
-    alt: "Forest",
-  },
-]
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+const title="რესტორანი მრავალჟამიერი"
 const PreviewHeader = () => {
   return (
-    <section className="flex justify-center">
-      <Carousel className="relative w-full max-w-[12rem] sm:max-w-xs h-50">
-        <CarouselContent className="relative bg-red-50 h-50">
-          {images.map((image) => (
-            <CarouselItem key={image.id}>
+    <section className="flex items-center justify-between z-10 relative  inset-0 bg-linear-to-b from-black to-transparent p-4 gap-2">
+   
+  
+        <h1 className="truncate text-white text-sm font-medium">{title.toUpperCase()}</h1>
 
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="object-cover w-full h-full"
-                    />
+    <LangDropdown />
 
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-
-        <CarouselPrevious className="left-2 top-1/2 -translate-y-1/2"  />
-        <CarouselNext className="right-2 top-1/2 -translate-y-1/2" />
-      </Carousel>
     </section>
-  )
-}
+  );
+};
 
-export default PreviewHeader
+export default PreviewHeader;
+
+const LangDropdown=()=>{
+    return( <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Button variant="outline" className="bg-white/30 text-white">KA</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-40" align="end">
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+           Georgian
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            English
+           
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            Russian
+
+          </DropdownMenuItem>
+          </DropdownMenuGroup>
+    </DropdownMenuContent>
+
+
+    </DropdownMenu>
+    )
+}

@@ -24,11 +24,8 @@ export default PreviewHeader;
 const LangDropdown = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant="outline" className="bg-white/30 text-white">
-          KA
-        </Button>
-      </DropdownMenuTrigger>
+            <DropdownMenuTrigger render={<Button variant="outline">Open</Button>} />
+
       <DropdownMenuContent className="w-40" align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem>Georgian</DropdownMenuItem>

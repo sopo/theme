@@ -8,7 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Link, NavLink } from "react-router";
+import {  NavLink } from "react-router";
 
 export function AppSidebar() {
   const activeClass="bg-neutral-200"

@@ -9,7 +9,7 @@ const TabBar = () => {
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>
       <TabsContent value="breakfast">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col">
           <MenuCategoryCard />
           <MenuCategoryCard />
         </div>
@@ -25,7 +25,7 @@ export default TabBar;
 const MenuCategoryCard = () => {
   return (
     <div className="relative flex flex-col gap-2">
-      <div className="border">
+      <div>
         <img
           className="object-cover h-40 w-full"
           src="https://bistrocharlotte.com/wp-content/uploads/2021/09/5-10.jpg"
@@ -53,75 +53,88 @@ const OpenedCard = () => {
         </p>
       </div>
       <div className="flex flex-col gap-8">
-    {MenuItemsArray.map((menuItem)=>{
-        return(
-            <MenuItem key={menuItem.id} title={menuItem.title} description={menuItem.description} glutenFree={menuItem.glutenFree} price={menuItem.price} vegan={menuItem.vegan} imgSrc={menuItem.imgSrc} />
-        )
-    })}
-
-
-   
+        {MenuItemsArray.map((menuItem) => {
+          return (
+            <MenuItem
+              key={menuItem.id}
+              title={menuItem.title}
+              description={menuItem.description}
+              glutenFree={menuItem.glutenFree}
+              price={menuItem.price}
+              vegan={menuItem.vegan}
+              imgSrc={menuItem.imgSrc}
+            />
+          );
+        })}
       </div>
     </div>
   );
 };
 
-interface MenuItemProps{
-    title: string,
-    price: string,
-    description: string,
-    vegan: boolean,
-    glutenFree: boolean,
-    imgSrc?: string,
-    id: string,
+interface MenuItemProps {
+  title: string;
+  price: string;
+  description: string;
+  vegan: boolean;
+  glutenFree: boolean;
+  imgSrc?: string;
+  id: string;
 }
 
-const MenuItem:React.FC<MenuItemProps>=({title, price, description, imgSrc, vegan="false", glutenFree="false"})=>{
-    return(
-            <div className="flex flex-col gap-1 items-center text-center border-t border-b py-4 border-dotted border-border">
-                 {imgSrc && <img
-            className="w-full h-40 objec-cover"
-            src={imgSrc}
-          />}
-          <h2 className="text-2xl font-serif">{title}{"  "}{price}</h2>
-          <div className="flex items-center gap-2">
-     {vegan &&   <Vegan size="14" className="text-lime-600" />}
-      {glutenFree &&   <WheatOff size="14" className="text-orange-400" />}
+const MenuItem: React.FC<MenuItemProps> = ({
+  title,
+  price,
+  description,
+  imgSrc,
+  vegan = "false",
+  glutenFree = "false",
+}) => {
+  return (
+    <div className="flex flex-col gap-1 items-center text-center border-t border-b py-4 border-dotted border-border">
+      {imgSrc && <img className="w-full h-40 objec-cover" src={imgSrc} />}
+      <h2 className="text-2xl font-serif">
+        {title}
+        {"  "}
+        {price}
+      </h2>
+      <div className="flex items-center gap-2">
+        {vegan && <Vegan size="14" className="text-lime-600" />}
+        {glutenFree && <WheatOff size="14" className="text-orange-400" />}
+      </div>
 
-          </div>
-          
-          <p className="text-md text-muted-foreground font-serif">
-          {description}
-          </p>
-        </div>
-    )
-}
-const MenuItemsArray=[
-    {
-        id: "1",
-        title: "Eclair",
-        price: "10.00",
-        description: "strawberry / pistachio / vanilla /chocolate",
-        imgSrc: "https://www.biggerbolderbaking.com/wp-content/uploads/2022/01/Eclairs-thumbnail-scaled.jpg",
-        glutenFree: true,
-        vegan: true
-    },
-      {
-        id: "2",
-        title: "Eclair",
-        price: "10.00",
-        description: "strawberry / pistachio / vanilla /chocolate",
-        imgSrc: "https://www.biggerbolderbaking.com/wp-content/uploads/2022/01/Eclairs-thumbnail-scaled.jpg",
-        glutenFree: true,
-        vegan: true
-    },
-      {
-        id: "3",
-        title: "Eclair",
-        price: "10.00",
-        description: "strawberry / pistachio / vanilla /chocolate",
-        imgSrc: "https://www.biggerbolderbaking.com/wp-content/uploads/2022/01/Eclairs-thumbnail-scaled.jpg",
-        glutenFree: true,
-        vegan: true
-    },
-]
+      <p className="text-md text-muted-foreground font-serif">{description}</p>
+    </div>
+  );
+};
+const MenuItemsArray: MenuItemProps[] = [
+  {
+    id: "1",
+    title: "Eclair",
+    price: "10.00",
+    description: "strawberry / pistachio / vanilla /chocolate",
+    imgSrc:
+      "https://www.biggerbolderbaking.com/wp-content/uploads/2022/01/Eclairs-thumbnail-scaled.jpg",
+    glutenFree: true,
+    vegan: true,
+  },
+  {
+    id: "2",
+    title: "Eclair",
+    price: "10.00",
+    description: "strawberry / pistachio / vanilla /chocolate",
+    imgSrc:
+      "https://www.biggerbolderbaking.com/wp-content/uploads/2022/01/Eclairs-thumbnail-scaled.jpg",
+    glutenFree: true,
+    vegan: true,
+  },
+  {
+    id: "3",
+    title: "Eclair",
+    price: "10.00",
+    description: "strawberry / pistachio / vanilla /chocolate",
+    imgSrc:
+      "https://www.biggerbolderbaking.com/wp-content/uploads/2022/01/Eclairs-thumbnail-scaled.jpg",
+    glutenFree: true,
+    vegan: true,
+  },
+];

@@ -1,14 +1,17 @@
 
 interface ColorCardProps{
-    colorName: string,
-    name: string
+    name: string,
+    color: string,
+    text: string,
+    id: number
+
 }
-const ColorCard:React.FC<ColorCardProps>=({colorName, name})=>{
+const ColorCard:React.FC<ColorCardProps>=({name, color, text,})=>{
     return(
-        <div>
-            <div className={`w-20 h-20 border rounded ${colorName}`}>
+        <div className="relative">
+            <div className={`w-60 h-20 rounded ${color}`}>
             </div>
-            <h6 >{name}</h6>
+            <h6 className={`font-bold p-2 absolute bottom-0 z-10 ${text}`}>{name}</h6>
         </div>
     )
 }

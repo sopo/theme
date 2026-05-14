@@ -11,19 +11,20 @@ import {
 import {  NavLink } from "react-router";
 
 export function AppSidebar() {
-  const activeClass="bg-neutral-200"
+const activeClass = "bg-sidebar-accent"
+const defaultClass= ""
   return (
-    <Sidebar>
+    <Sidebar className="border-none">
       <SidebarHeader />
       <SidebarContent>
 
 
           <SidebarGroup>
             <SidebarGroupLabel>STYLE</SidebarGroupLabel>
-            <SidebarMenuItem>
-              <NavLink to="colors">
+            <SidebarMenuItem >
+              <NavLink to="colors" >
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                     Colors
                   </SidebarMenuButton>
                 )}
@@ -36,7 +37,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <NavLink to="components">
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                     Components
                   </SidebarMenuButton>
                 )}
@@ -45,7 +46,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
              <NavLink to="forms">
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                     Forms
                   </SidebarMenuButton>
                 )}
@@ -54,7 +55,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
              <NavLink to="preview">
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                     Preview
                   </SidebarMenuButton>
                 )}
@@ -67,7 +68,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <NavLink to="/auth/login">
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                    Log In
                   </SidebarMenuButton>
                 )}
@@ -76,7 +77,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <NavLink to="/auth/register">
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                     Register
                   </SidebarMenuButton>
                 )}
@@ -85,7 +86,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
              <NavLink to="/auth/reset-password">
                 {({ isActive }) => (
-                  <SidebarMenuButton className={isActive ? activeClass : ""}>
+                  <SidebarMenuButton className={isActive ? activeClass : defaultClass}>
                     Reset Password
                   </SidebarMenuButton>
                 )}

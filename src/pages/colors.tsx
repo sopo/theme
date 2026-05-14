@@ -3,7 +3,7 @@ import ColorCard from "@/components/color-card";
 const Colors = () => {
   return (
     <div className="flex flex-col mx-auto p-10">
-      <h1 className="text-3xl font-medium">Colors</h1>
+      <h1 className="text-3xl font-medium font-google">Colors</h1>
       <div className="grid grid-cols-5 gap-4">
         {root.map((item) => {
           return (

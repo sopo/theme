@@ -29,7 +29,7 @@ const ControlledField = <T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid} >
-          <FieldLabel htmlFor={name} >
+          <FieldLabel htmlFor={name} className="px-2 text-secondary-foreground">
             {label}
           </FieldLabel>
 
@@ -39,7 +39,7 @@ const ControlledField = <T extends FieldValues>({
             aria-invalid={fieldState.invalid}
             placeholder={placeholder}
             autoComplete="off"
-            className="bg-white"
+            className="bg-white h-12 placeholder:text-primary/30 border border-cyan-700"
           />:
            <InputGroup className="bg-white">
        
